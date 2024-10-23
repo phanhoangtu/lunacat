@@ -29,6 +29,11 @@ preloadImages.forEach((img) => {
 });
 
 function changeBackground() {
-    currentIndex = (currentIndex + 1) % images.length;
+    backgroundContainer.style.transition = 'none';
     backgroundContainer.style.backgroundImage = `url(${images[currentIndex]})`;
+    setTimeout(() => {
+        backgroundContainer.style.transition = 'background-image 1s ease-in-out, background-size 1s ease-in-out';
+        backgroundContainer.style.backgroundSize = 'cover';
+    }, 50);
+    currentIndex = (currentIndex + 1) % images.length;
 }
