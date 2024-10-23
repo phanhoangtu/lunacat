@@ -4,6 +4,12 @@ const images = [
     'assets/image-03.svg',
     'assets/image-04.svg'
 ];
+let currentIndex = 0;
+const preloadImages = images.map(src => {
+    const img = new Image();
+    img.src = src;
+    return img;
+});
 const backgroundContainer = document.querySelector('.background-container');
 let currentImageIndex = 0;
 function changeBackground() {
