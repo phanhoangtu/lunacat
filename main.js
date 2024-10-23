@@ -12,4 +12,4 @@ function changeBackground() {
     backgroundContainer.style.backgroundImage = `url(${images[currentImageIndex]})`;
 }
 backgroundContainer.style.backgroundImage = `url(${images[0]})`;
-setInterval(changeBackground, 5000);
+setInterval(changeBackground, 3500);
