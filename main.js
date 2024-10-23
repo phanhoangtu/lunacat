@@ -1,8 +1,12 @@
 const images = [
-    'assets/image-01.svg',
-    'assets/image-02.svg',
-    'assets/image-03.svg',
-    'assets/image-04.svg'
+    'assets/image1.svg',
+    'assets/image2.svg',
+    'assets/image3.svg',
+    'assets/image4.svg',
+    'assets/image5.svg',
+    'assets/image6.svg',
+    'assets/image7.svg',
+    'assets/image8.svg'
 ];
 
 let currentIndex = 0;
