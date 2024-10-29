@@ -10,34 +10,25 @@ const images = [
 ];
 
 let currentIndex = 0;
-
-const preloadImages = images.map(src => {
-    const img = new Image();
-    img.src = src;
-    return img;
-});
-
 const backgroundContainer = document.querySelector('.background-container');
 
-backgroundContainer.style.backgroundImage = `url(${images[0]})`;
+backgroundContainer.style.backgroundImage = `url(${images[currentIndex]})`;
 
-let imagesLoaded = 0;
-
-preloadImages.forEach((img) => {
+function loadNextImage(index) {
+    const img = new Image();
+    img.src = images[index];
     img.onload = () => {
-        imagesLoaded++;
-        if (imagesLoaded === preloadImages.length) {
-            setInterval(changeBackground, 3500);
+        if (index === currentIndex) {
+            backgroundContainer.style.backgroundImage = `url(${img.src})`;
         }
     };
-});
+}
 
 function changeBackground() {
-    backgroundContainer.style.transition = 'none';
-    backgroundContainer.style.backgroundImage = `url(${images[currentIndex]})`;
-    setTimeout(() => {
-        backgroundContainer.style.transition = 'background-image 1s ease-in-out, background-size 1s ease-in-out';
-        backgroundContainer.style.backgroundSize = 'cover';
-    }, 50);
     currentIndex = (currentIndex + 1) % images.length;
+    loadNextImage(currentIndex);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    setInterval(changeBackground, 3500);
+});
