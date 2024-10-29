@@ -1,33 +1,20 @@
-const images = [
-    'assets/image1.svg',
-    'assets/image2.svg',
-    'assets/image3.svg',
-    'assets/image4.svg',
-    'assets/image5.svg',
-    'assets/image6.svg',
-    'assets/image7.svg',
-    'assets/image8.svg'
-];
-
+const slides = document.querySelectorAll('.slide'); // Lấy tất cả các slide
 let currentIndex = 0;
-const backgroundContainer = document.querySelector('.background-container');
-const nextBackground = document.querySelector('.next-background');
 
-backgroundContainer.style.backgroundImage = `url(${images[currentIndex]})`;
+// Bắt đầu hiển thị ảnh đầu tiên ngay lập tức
+document.addEventListener("DOMContentLoaded", () => {
+    changeBackground(); // Hiển thị ảnh đầu tiên
+    setInterval(changeBackground, 5000); // Chuyển đổi mỗi 5 giây
+});
 
 function changeBackground() {
-    currentIndex = (currentIndex + 1) % images.length;
-    const nextImage = images[currentIndex];
+    slides.forEach((slide, index) => {
+        if (index === currentIndex) {
+            slide.style.opacity = 1; // Hiện ảnh hiện tại
+        } else {
+            slide.style.opacity = 0; // Ẩn các ảnh khác
+        }
+    });
 
-    nextBackground.style.backgroundImage = `url(${nextImage})`;
-    nextBackground.classList.add('fade-in');
-
-    nextBackground.addEventListener('transitionend', () => {
-        backgroundContainer.style.backgroundImage = `url(${nextImage})`;
-        nextBackground.classList.remove('fade-in');
-    }, { once: true });
+    currentIndex = (currentIndex + 1) % slides.length; // Cập nhật chỉ số ảnh hiện tại
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    setInterval(changeBackground, 3500);
-});
