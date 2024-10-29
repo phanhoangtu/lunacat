@@ -12,8 +12,8 @@ body, html {
     overflow: hidden;
 }
 
-.background-container {
-    position: absolute; 
+.background-container, .next-background {
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -22,5 +22,14 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
-    transition: background-image 1s ease-in-out;
+}
+
+.next-background {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+}
+
+.next-background.fade-in {
+    opacity: 1;
 }
