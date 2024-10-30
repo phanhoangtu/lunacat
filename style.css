@@ -16,20 +16,31 @@ body, html {
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .slide {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 0; /* Đặt tất cả slide ở cùng một vị trí */
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
-    opacity: 0;  /* Khởi đầu với độ mờ 0 */
-    transition: opacity 0.5s ease-in-out; /* Thêm hiệu ứng mờ nhanh hơn */
+    opacity: 0; /* Khởi đầu với độ mờ 0 */
+    transition: opacity 0.5s ease-in-out; /* Chuyển đổi mượt mà */
 }
 
 .slide.active {
     opacity: 1; /* Hiện ảnh hiện tại */
 }
+
+/* Đặt ảnh cho từng slide */
+.slide:nth-child(1) { background-image: url('assets/image1.svg'); }
+.slide:nth-child(2) { background-image: url('assets/image2.svg'); }
+.slide:nth-child(3) { background-image: url('assets/image3.svg'); }
+.slide:nth-child(4) { background-image: url('assets/image4.svg'); }
+.slide:nth-child(5) { background-image: url('assets/image5.svg'); }
+.slide:nth-child(6) { background-image: url('assets/image6.svg'); }
+.slide:nth-child(7) { background-image: url('assets/image7.svg'); }
+.slide:nth-child(8) { background-image: url('assets/image8.svg'); }
