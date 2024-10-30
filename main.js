@@ -8,7 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function changeBackground() {
-    slides[currentIndex].classList.remove('active'); // Ẩn ảnh hiện tại
+    const currentSlide = slides[currentIndex]; // Slide hiện tại
+    currentSlide.classList.remove('active'); // Ẩn slide hiện tại
+
     currentIndex = (currentIndex + 1) % slides.length; // Cập nhật chỉ số ảnh hiện tại
-    slides[currentIndex].classList.add('active'); // Hiện ảnh tiếp theo
+    const nextSlide = slides[currentIndex]; // Slide tiếp theo
+    nextSlide.classList.add('active'); // Hiển thị slide tiếp theo
 }
