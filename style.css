@@ -10,6 +10,7 @@ body, html {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-color: pink; /* Nền màu hồng */
 }
 
 .background-container {
@@ -17,25 +18,26 @@ body, html {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    transition: background-color 1s ease-in-out; /* Transition for background color */
 }
 
 .slide {
     position: absolute;
     top: 0;
-    left: 0; /* Đặt tất cả slide ở cùng một vị trí */
+    left: 0; 
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
-    opacity: 0; /* Khởi đầu với độ mờ 0 */
-    transition: opacity 0.5s ease-in-out; /* Chuyển đổi mượt mà */
+    opacity: 0; /* Start with opacity 0 */
+    transition: opacity 0.5s ease-in-out; /* Smooth transition */
 }
 
 .slide.active {
-    opacity: 1; /* Hiện ảnh hiện tại */
+    opacity: 1; /* Show current slide */
 }
 
-/* Đặt ảnh cho từng slide */
+/* Set background images for each slide */
 .slide:nth-child(1) { background-image: url('assets/image1.svg'); }
 .slide:nth-child(2) { background-image: url('assets/image2.svg'); }
 .slide:nth-child(3) { background-image: url('assets/image3.svg'); }
@@ -44,3 +46,65 @@ body, html {
 .slide:nth-child(6) { background-image: url('assets/image6.svg'); }
 .slide:nth-child(7) { background-image: url('assets/image7.svg'); }
 .slide:nth-child(8) { background-image: url('assets/image8.svg'); }
+
+.heart-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the heart */
+    display: flex; /* Center the heart container */
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Ensure heart is above background */
+    transition: opacity 1s ease-in-out; /* Add transition for opacity */
+}
+
+.heart {
+    width: 100px; /* Set the desired width */
+    height: 90px; /* Set the desired height */
+    background-image: url('assets/heart.webp'); /* Path to your heart image */
+    background-size: contain; /* Make sure the image covers the heart */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.small-heart {
+    position: absolute;
+    width: 20px; /* Adjust width */
+    height: 18px; /* Adjust height */
+    background-image: url('assets/heart.webp'); /* Path to your small heart image */
+    background-size: contain; /* Ensure the image fits */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+    opacity: 0;
+    animation: float 2s ease-in-out forwards;
+}
+
+
+.small-heart::before,
+.small-heart::after {
+    content: "";
+    width: 20px;
+    height: 18px;
+    position: absolute;
+}
+
+.small-heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.small-heart::after {
+    left: 10px;
+    top: 0;
+}
+
+@keyframes float {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(-45deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-200px) scale(0.5) rotate(-45deg);
+    }
+}
